@@ -12,7 +12,7 @@ postRoute.get("/", async (req, res) => {
         if (device) {
             let data = await postModel.find({ device: device })
             res.send(data)
-        } else if(device1&&devide2) {
+        } else if(device1) {
             let data = await postModel.find({ $or: [{ device: device1 }, { device: devide2 }] })
             res.send(data)
         } else{

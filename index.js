@@ -18,7 +18,7 @@ app.use("/user", userRouter)
 
 app.use(Auth)
 
-app.use("/post", postRoute)
+app.use("/posts", postRoute)
 
 app.listen(process.env.port, async()=>{
     try {
