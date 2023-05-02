@@ -5,18 +5,19 @@ const postRoute = express()
 
 postRoute.get("/", async (req, res) => {
     let { device, device1, devide2 } = req.query
+    let {userID} = req.body
 
 
     try {
         
         if (device) {
-            let data = await postModel.find({ device: device })
+            let data = await postModel.find({ device: device,userID })
             res.send(data)
         } else if(device1) {
             let data = await postModel.find({ $or: [{ device: device1 }, { device: devide2 }] })
             res.send(data)
         } else{
-            let data = await postModel.find()
+            let data = await postModel.find({userID})
             res.send(data)
         }
 
