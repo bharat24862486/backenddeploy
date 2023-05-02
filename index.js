@@ -2,6 +2,8 @@ const express = require("express")
 const connection = require("./db")
 const userRouter = require("./route/user.route")
 const cors = require("cors")
+const Auth = require("./middleware/auth.middleware")
+const postRoute = require("./route/post.route")
 require("dotenv").config()
 const app = express()
 
@@ -13,6 +15,10 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/user", userRouter)
+
+app.use(Auth)
+
+app.use("/post", postRoute)
 
 app.listen(process.env.port, async()=>{
     try {
